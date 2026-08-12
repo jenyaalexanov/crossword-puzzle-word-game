@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossword Puzzle: Word Game — Brain Teaser & Word Logic</title>
+    <meta name="description" content="Challenge your brain with Crossword Puzzle: Word Game! Enjoy word logic puzzles and brain teasers on iPhone & iPad.">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Crossword Puzzle: Word Game">
+    <meta property="og:description" content="Brain Teaser & Word Logic game for iOS. Test your vocabulary and problem-solving skills everywhere.">
+    <meta property="og:image" content="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/39/56/42/395642b5-d80d-c74b-0eee-6678f8528d4f/Placeholder.mill/400x400bb-75.jpg">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.8);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --accent-purple: #8a2be2;
+            --accent-blue: #007aff;
+            --accent-gradient: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .app-header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .app-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.03);
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .app-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 16px;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card i {
+            font-size: 1.2rem;
+            color: #a855f7;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* App Store Download Button */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: #ffffff;
+            color: #000000;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
+            background: #f0f0f0;
+        }
+
+        .cta-btn i {
+            font-size: 1.6rem;
+        }
+
+        /* Screenshots Showcase */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 50px 0 24px;
+            text-align: center;
+        }
+
+        .screenshots-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 10px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-purple) transparent;
+        }
+
+        .screenshots-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .screenshots-container::-webkit-scrollbar-thumb {
+            background-color: var(--accent-purple);
+            border-radius: 4px;
+        }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            width: 260px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--card-border);
+            scroll-snap-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Key Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 28px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #a855f7;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Technical Info */
+        .app-info-section {
+            margin: 60px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 36px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-item p {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .app-title {
+                font-size: 1.8rem;
+            }
+            .screenshot-item {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header>
+            <div class="app-header-content">
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/39/56/42/395642b5-d80d-c74b-0eee-6678f8528d4f/Placeholder.mill/400x400bb-75.jpg" alt="Crossword Puzzle Icon" class="app-icon">
+                
+                <div>
+                    <h1 class="app-title">Crossword Puzzle: Word Game</h1>
+                    <p class="app-subtitle">Brain Teaser & Word Logic</p>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div class="stat-value">Free</div>
+                        <div class="stat-label">Price</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-child-reaching"></i>
+                        <div class="stat-value">4+</div>
+                        <div class="stat-label">Age Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                        <div class="stat-value">iOS / iPadOS</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-language"></i>
+                        <div class="stat-value">English</div>
+                        <div class="stat-label">Language</div>
+                    </div>
+                </div>
+
+                <a href="https://apps.apple.com/us/app/crossword-puzzle-word-game/id6799480100" class="cta-btn" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-apple"></i>
+                    <span>Download on App Store</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Screenshots Showcase -->
+        <section>
+            <h2 class="section-title">Game Screenshots</h2>
+            <div class="screenshots-container">
+                <div class="screenshot-item">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1a/4b/19/1a4b1933-e7f5-bd57-1cfc-1ac3dab2122d/en_1.png/460x998bb.jpg" alt="Crossword Puzzle Screenshot 1">
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/51/c5/6a/51c56aa8-514f-d70d-4e18-9f4a99204c70/en_2.png/460x998bb.jpg" alt="Crossword Puzzle Screenshot 2">
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/43/2b/b9/432bb9a4-d628-0a27-9038-1f4c6ec47d9a/en_3.png/460x998bb.jpg" alt="Crossword Puzzle Screenshot 3">
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section>
+            <h2 class="section-title">Why You'll Love It</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>Brain Training</h3>
+                    <p>Expand your vocabulary, sharpen your logic, and test your knowledge with challenging classic crossword puzzles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <h3>Smooth Gameplay</h3>
+                    <p>Designed with a clean, modern interface optimized for both iPhone and iPad screens for effortless word solving.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-wifi"></i></div>
+                    <h3>Play Anywhere</h3>
+                    <p>Enjoy offline support so you can solve puzzles anytime, anywhere — whether on your commute or during downtime.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Information -->
+        <section class="app-info-section" id="information">
+            <h2 style="font-size: 1.5rem; margin-bottom: 20px;">App Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>Developer</h4>
+                    <p>Evgenii Aleksanov</p>
+                </div>
+                <div class="info-item">
+                    <h4>Category</h4>
+                    <p>Word / Games</p>
+                </div>
+                <div class="info-item">
+                    <h4>Size</h4>
+                    <p>48.8 MB</p>
+                </div>
+                <div class="info-item">
+                    <h4>Compatibility</h4>
+                    <p>Requires iOS 12.0 or later</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; Evgenii Aleksanov. All rights reserved.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://apps.apple.com/us/app/crossword-puzzle-word-game/id6799480100" target="_blank">View in App Store</a>
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
